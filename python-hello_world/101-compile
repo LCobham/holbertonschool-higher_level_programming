@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+python3 -c  "dest = '$PYFILE' + 'c'; import py_compile; py_compile.compile('$PYFILE', dest)"
