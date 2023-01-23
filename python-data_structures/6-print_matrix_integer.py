@@ -4,8 +4,11 @@
 def print_matrix_integer(matrix=[[]]):
     for i in range(len(matrix)):
         length = len(matrix[i])
-        for j in range(length):
-            if j != length - 1:
-                print("{:d}".format(matrix[i][j]), end=' ')
-            else:
-                print("{:d}".format(matrix[i][j]))
+        if length > 0:
+            for j in range(length):
+                if j != length - 1:
+                    print("{:d}".format(matrix[i][j]), end=' ')
+                else:
+                    print("{:d}".format(matrix[i][j]))
+        else:
+            print("")
