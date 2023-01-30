@@ -4,6 +4,8 @@
 Objects of type square only have a size attribute. Are of the square can be
 obtained with the area method
 """
+
+
 class Square:
     """Creates a square
 

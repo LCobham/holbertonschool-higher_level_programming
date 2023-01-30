@@ -5,6 +5,7 @@ This module creates an empty class called Square. No attributes or methods
 are available as of yet.
 """
 
+
 class Square:
     """Create the Square class.
 

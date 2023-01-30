@@ -5,6 +5,7 @@ Instances of the Square class only have a size, that defaults to 0.
 No methods are available yet.
 """
 
+
 class Square:
     """Creates an object of type Square.
 
