@@ -8,7 +8,7 @@ a size attribute and no methods.
 
 class Square:
     """Create the Square class.
-    
+
     Args:
         size: size of square.
     """
