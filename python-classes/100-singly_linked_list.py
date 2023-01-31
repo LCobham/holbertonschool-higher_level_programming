@@ -58,7 +58,7 @@ class SinglyLinkedList:
         """
         tmp = self.__head
         if tmp is None:
-            return str(None)
+            return ""
 
         while tmp is not None and tmp.next_node is not None:
             print(tmp.data)
