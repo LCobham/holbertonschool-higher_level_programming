@@ -1,4 +1,4 @@
-#!usr/bin/python3
+#!/usr/bin/python3
 """Creates a class for a node in a linked list and a linked list class.
 """
 
