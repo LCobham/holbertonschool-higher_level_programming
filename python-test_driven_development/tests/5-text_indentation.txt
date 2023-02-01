@@ -8,6 +8,7 @@ Using the ``test_indentation`` function
 Hello
 >>> text_indentation("Hello.")
 Hello.
+<BLANKLINE>
 >>> text_indentation("Hi. ")
 Hi.
 <BLANKLINE>
