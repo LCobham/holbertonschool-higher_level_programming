@@ -11,10 +11,21 @@ class MaxIntegerTesting(unittest.TestCase):
     def test_emptyList(self):
         self.assertIsNone(max_integer([]), None)
 
-    def test_regularCase(self):
+    def test_maxInMiddle(self):
         self.assertEqual(max_integer([1, 7, 5, 4, 3, 5]), 7)
         self.assertEqual(max_integer([100, 26635, 1e3, 2.6]), 26635)
         self.assertEqual(max_integer([-2000, -154, 3, 4, -float('inf')]), 4)
+
+    def test_maxAtBeginning(self):
+        self.assertEqual(max_integer([1, 0, -1]), 1)
+        self.assertEqual(max_integer([1e15, 277778, 2, -float('inf')]), 1e15)
+
+    def test_maxAtEnd(self):
+        self.assertEqual(max_integer([1, 2, 3, 4, 5, 6]), 6)
+        self.assertEqual(max_integer([-15, 40005, 20, 1, 3, 5, 7, 1e15]), 1e15)
+
+    def test_oneElementList(self):
+        self.assertEqual(max_integer([3]), 3)
 
     def test_noInput(self):
         self.assertIsNone(max_integer(), None)
