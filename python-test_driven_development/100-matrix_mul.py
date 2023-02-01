@@ -11,32 +11,27 @@ def matrix_mul(m_a, m_b):
     if not isinstance(m_b, list):
         raise TypeError("m_b must be a list")
 
-    aLen = len(m_a)
-    for i in range(aLen):
-        if type(m_a[i]) is not list:
-            raise TypeError("m_a must be a list of lists")
+    aLen, bLen = len(m_a), len(m_b)
+    if not all(type(m_a[i]) is list for i in range(aLen)):
+        raise TypeError("m_a must be a list of lists")
+    if not all(type(m_b[i]) is list for i in range(bLen)):
+        raise TypeError("m_b must be a list of lists")
 
-    if aLen == 0 or (aLen == 1 and len(m_a[0]) == 0):
+    if aLen == 0 or len(m_a[0]) == 0:
         raise ValueError("m_a can't be empty")
-    aFirstRowLen = len(m_a[0])
-
-    bLen = len(m_b)
-    for i in range(bLen):
-        if type(m_b[i]) is not list:
-            raise TypeError("m_b must be a list of lists")
-    if bLen == 0 or (bLen == 1 and len(m_b[0]) == 0):
+    if bLen == 0 or len(m_b[0]) == 0:
         raise ValueError("m_b can't be empty")
-    bFirstRowLen = len(m_b[0])
 
+    aFirstRowLen, bFirstRowLen = len(m_a[0]), len(m_b[0])
     if not all(len(m_a[i]) == aFirstRowLen for i in range(aLen)):
         raise TypeError("each row of m_a must be of the same size")
     if not all(len(m_b[i]) == bFirstRowLen for i in range(bLen)):
         raise TypeError("each row of m_b must be of the same size")
 
-    if not all(type(m_a[i][j]) is not int or float
+    if not all(isinstance(m_a[i][j], (int, float))
                for i in range(aLen) for j in range(aFirstRowLen)):
         raise TypeError("m_a should contain only integers or floats")
-    if not all(type(m_b[i][j]) is int or float
+    if not all(isinstance(m_b[i][j], (int, float))
                for i in range(bLen) for j in range(bFirstRowLen)):
         raise TypeError("m_b should contain only integers or floats")
 
