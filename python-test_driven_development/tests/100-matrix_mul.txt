@@ -49,3 +49,15 @@ ValueError: m_b can't be empty
 Traceback (most recent call last):
 ...
 TypeError: m_b should contain only integers or floats
+>>> matrix_mul([[1]], [1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+>>> matrix_mul([[1, 2, "tre"]], [[1], [2], [2]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+>>> matrix_mul([[1]], [[1, 2], [3], [4, 5]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_b must be of the same size
