@@ -29,3 +29,23 @@ TypeError: each row of m_a must be of the same size
 Traceback (most recent call last):
 ...
 ValueError: m_a can't be empty
+>>> matrix_mul([1, 2, 3], [[1]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+>>> matrix_mul()
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+>>> matrix_mul([[1]])
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+>>> matrix_mul([[1]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+>>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[1, 2], [3, "s"], [5, "seis"]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats

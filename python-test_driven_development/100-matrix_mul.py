@@ -14,11 +14,17 @@ def matrix_mul(m_a, m_b):
     aLen = len(m_a)
     if aLen == 0 or (aLen == 1 and len(m_a[0]) == 0):
         raise ValueError("m_a can't be empty")
+
+    if not isinstance(m_a[0], list):
+        raise TypeError("m_a must be a list of lists")
     aFirstRowLen = len(m_a[0])
 
     bLen = len(m_b)
     if bLen == 0 or (bLen == 1 and len(m_b[0]) == 0):
         raise ValueError("m_b can't be empty")
+
+    if not isinstance(m_b[0], list):
+        raise TypeError("m_b must be a list of lists")
     bFirstRowLen = len(m_b[0])
 
     for i in range(aLen):
@@ -32,7 +38,7 @@ def matrix_mul(m_a, m_b):
                 raise TypeError("m_a should contain only integers or floats")
 
     for i in range(bLen):
-        if not isinstance(m_b[i], list):
+        if not isinstance(m_b[i], type([])):
             raise TypeError("m_b must be a list of lists")
         rowLen = len(m_b[i])
         if bFirstRowLen != rowLen:
