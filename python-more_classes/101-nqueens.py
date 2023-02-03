@@ -9,18 +9,18 @@ import sys
 def main():
     argc = len(sys.argv)
     if (argc != 2):
-        sys.stderr.write("Usage: nqueens N\n")
+        print("Usage: nqueens N")
         sys.exit(1)
 
     try:
         queens = int(sys.argv[1])
 
     except Exception:
-        sys.stderr.write("N must be a number\n")
+        print("N must be a number")
         sys.exit(1)
 
     if queens < 4:
-        sys.stderr.write("N must be at least 4\n")
+        print("N must be at least 4")
         sys.exit(1)
 
     nQueens(queens)
