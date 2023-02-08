@@ -9,5 +9,5 @@ class MyList(list):
     """New list class with additional functionality"""
 
     def print_sorted(self):
-        """Rturns the list sorted in ascending order"""
-        return sorted(self)
+        """Prints the list sorted in ascending order"""
+        print(sorted(self))
