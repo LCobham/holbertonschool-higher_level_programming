@@ -16,12 +16,13 @@ Testing ``my_list`` function
 [-1, 0, 1, 2, -3]
 >>> my_list.print_sorted()
 [-3, -1, 0, 1, 2]
->>> x = my_list.print_sorted()
-[-3, -1, 0, 1, 2]
->>> x
->>> my_list = MyList([7, 9, 22, 5])
 >>> my_list.print_sorted()
+[-3, -1, 0, 1, 2]
+>>> my_list = MyList([7, 9, 22, 5])
+>>> x = my_list.print_sorted()
 [5, 7, 9, 22]
+>>> type(x)
+<class 'NoneType'>
 >>> my_list.print_sorted(8)
 Traceback (most recent call last):
 ...
