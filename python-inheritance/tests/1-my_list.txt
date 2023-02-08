@@ -21,9 +21,11 @@ Testing ``my_list`` function
 >>> my_list = MyList([7, 9, 22, 5])
 >>> x = my_list.print_sorted()
 [5, 7, 9, 22]
->>> type(x)
-<class 'NoneType'>
+>>> print(x)
+None
 >>> my_list.print_sorted(8)
 Traceback (most recent call last):
 ...
 TypeError: print_sorted() takes 1 positional argument but 2 were given
+>>> print(my_list.print_sorted)
+<bound method MyList.print_sorted of [7, 9, 22, 5]>
