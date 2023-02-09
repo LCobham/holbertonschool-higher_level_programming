@@ -14,3 +14,8 @@ class Square(Rectangle):
     def __init__(self, size):
         if BaseGeometry.integer_validator(self, "size", size) is None:
             Rectangle.__init__(self, size, size)
+
+    def __str__(self):
+        return "[Square] {}/{}".format(
+                    self._Rectangle__width,
+                    self._Rectangle__width)
