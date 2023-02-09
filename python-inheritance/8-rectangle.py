@@ -5,21 +5,7 @@
 """
 
 
-class BaseGeometry:
-    """Class for basic geometry operations"""
-
-    def area(self):
-        """Raises an exception - not yet implemented"""
-        raise Exception("area() is not implemented")
-
-    def integer_validator(self, name, value):
-        """Validates the value passed as an argument"""
-        if type(value) is not int:
-            raise TypeError("{} must be an integer".format(name))
-        if value <= 0:
-            raise ValueError("{} must be greater than 0".format(name))
-
-
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
 class Rectangle(BaseGeometry):
     """This class defines an object for a rectangle"""
     def __init__(self, width, height):
