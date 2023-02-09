@@ -39,6 +39,9 @@ TypeError: integer_validator() missing 2 required positional arguments: 'name' a
 >>> print(bg.integer_validator("width", 89))
 None
 >>> bg.integer_validator("bool", True)
+Traceback (most recent call last):
+...
+TypeError: bool must be an integer
 >>> bg.integer_validator("tup", (1,))
 Traceback (most recent call last):
 ...
