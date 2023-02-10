@@ -54,3 +54,7 @@ TypeError: list must be an integer
 Traceback (most recent call last):
 ...
 TypeError: set must be an integer
+>>> bg.integer_validator("Nop", None)
+Traceback (most recent call last):
+...
+TypeError: Nop must be an integer
