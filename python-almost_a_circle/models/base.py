@@ -7,7 +7,6 @@
 import json
 
 
-
 class Base:
     """Base class. Used to set the id of different instances.
 
