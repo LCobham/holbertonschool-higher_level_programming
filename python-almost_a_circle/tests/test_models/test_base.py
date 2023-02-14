@@ -5,31 +5,49 @@
 
 
 import unittest
-import sys
-
-sys.path.append('/root/holbertonschool-higher_level_programming/python-almost_a_circle/')
 from models.base import Base
 
 
-class TestBaseClass(unittest.TestCase):
+class TestBaseId(unittest.TestCase):
     """Simple class for testing Base class"""
-    def setUp(self):
-        self.b1 = Base()
+    def testBaseIdWithArg(self):
         self.b98 = Base(98)
-        self.b79 = Base(id=79)
-        self.b2 = Base()
-        self.b3, self.b4 = Base(), Base()
-        self.b5 = Base(-7)
-        self.b0 = Base(0)
-
-    def testBaseId(self):
-        self.assertEqual(self.b1.id, 1)
+        self.b49 = Base(id=49)
+        self.b101 = Base(101)
         self.assertEqual(self.b98.id, 98)
-        self.assertEqual(self.b79.id, 79)
+        self.assertEqual(self.b49.id, 49)
+        self.assertEqual(self.b101.id, 101)
+
+    def testBaseIdNoArg(self):
+        self.b1 = Base()
+        self.b2 = Base()
+        self.b3 = Base()
+        self.b11 = Base(11)
+        self.b12 = Base(12)
+        self.b4 = Base()
+        self.b14 = Base(18)
+        self.b5 = Base()
+        self.assertEqual(self.b1.id, 1)
         self.assertEqual(self.b2.id, 2)
-        self.assertEqual((self.b3.id, self.b4.id), (3, 4))
-        self.assertEqual(self.b5.id, -7)
+        self.assertEqual(self.b3.id, 3)
+        self.assertEqual(self.b11.id, 11)
+        self.assertEqual(self.b12.id, 12)
+        self.assertEqual(self.b4.id, 4)
+        self.assertEqual(self.b14.id, 18)
+        self.assertEqual(self.b5.id, 5)
+
+    def testBaseWithNegOrZero(self):
+        self.b0 = Base(0)
+        self.neg7 = Base(-7)
+        self.neg30 = Base(-30)
         self.assertEqual(self.b0.id, 0)
+        self.assertEqual(self.neg7.id, -7)
+        self.assertEqual(self.neg30.id, -30)
+
+    def testBaseTupleUnpacking(self):
+        self.b9, self.b10 = Base(9), Base(10)
+        self.assertEqual(self.b9.id, 9)
+        self.assertEqual(self.b10.id, 10)
 
 
 if __name__ == '__main__':
