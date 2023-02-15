@@ -43,8 +43,11 @@ class Base:
         """
         filename = cls.__name__ + '.json'
         dict_list = []
-        for obj in list_objs:
-            dict_list.append(obj.to_dictionary())
+
+        if list_objs is not None:
+            for obj in list_objs:
+                dict_list.append(obj.to_dictionary())
+
         to_dump = Base.to_json_string(dict_list)
         with open(filename, "w", encoding="utf-8") as f:
             f.write(to_dump)
