@@ -88,8 +88,7 @@ class Base:
         filename = cls.__name__ + '.json'
         try:
             with open(filename, 'r', encoding='utf-8') as f:
-                list_of_dicts = json.load(f)
-            print(list_of_dicts)
+                list_of_dicts = Base.from_json_string(f.read())
 
             return [cls.create(**dic) for dic in list_of_dicts]
 
