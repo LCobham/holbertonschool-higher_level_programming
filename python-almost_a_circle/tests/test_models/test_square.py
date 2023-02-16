@@ -58,6 +58,34 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(self.s2.area(), 4)
         self.assertEqual(self.s3.area(), 1)
 
+    def testUpdateArgs(self):
+        self.assertEqual(str(self.s1), "[Square] (101) 0/0 - 5")
+        self.s1.update(102)
+        self.assertEqual(str(self.s1), "[Square] (102) 0/0 - 5")
+        self.s1.update(102, 3)
+        self.assertEqual(str(self.s1), "[Square] (102) 0/0 - 3")
+        self.s1.update(102, 3, 4)
+        self.assertEqual(str(self.s1), "[Square] (102) 4/0 - 3")
+        self.s1.update(102, 3, 4, 5)
+        self.assertEqual(str(self.s1), "[Square] (102) 4/5 - 3")
+    
+    def testUpdateKwargs(self):
+        self.assertEqual(str(self.s1), "[Square] (101) 0/0 - 5")
+        self.s1.update(x=4)
+        self.assertEqual(str(self.s1), "[Square] (101) 4/0 - 5")
+        self.s1.update(id=25, y=6)
+        self.assertEqual(str(self.s1), "[Square] (25) 4/6 - 5")
+        self.s1.update(id=100, size=2, y=1, x=3)
+        self.assertEqual(str(self.s1), "[Square] (100) 3/1 - 2")
+        self.s1.update(105, 2, x=10)
+        self.assertEqual(str(self.s1), "[Square] (105) 3/1 - 2")
+
+        def testSquareToDictionary(self):
+            for square in [self.s1, self.s2, self.s3]:
+                square_dic = square.to_dictionary()
+                for key, value in square_dic.items():
+                    self.assertEqual(getattr(square, key), value)
+                self.assertEqual(len(square_dic), len(square.__dict__))
 
 if __name__ == '__main__':
     unittest.main()

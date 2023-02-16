@@ -103,6 +103,15 @@ class TestRectangleMethods(unittest.TestCase):
         self.r1.update(0, 2, 3, id=4, height=5)
         self.assertEqual(str(self.r1), "[Rectangle] (0) 10/10 - 2/3")
 
+    def testToDictionary(self):
+        for rectangle in [self.r1, self.r2, self.r3, self.r4]:
+            rectangle_dic = rectangle.to_dictionary()
+            for key, value in rectangle_dic.items():
+                self.assertEqual(getattr(rectangle, key), value)
+            self.assertEqual(len(rectangle_dic), len(rectangle.__dict__))
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
