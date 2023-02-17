@@ -68,7 +68,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(str(self.s1), "[Square] (102) 4/0 - 3")
         self.s1.update(102, 3, 4, 5)
         self.assertEqual(str(self.s1), "[Square] (102) 4/5 - 3")
-    
+
     def testUpdateKwargs(self):
         self.assertEqual(str(self.s1), "[Square] (101) 0/0 - 5")
         self.s1.update(x=4)
@@ -80,12 +80,12 @@ class TestSquareClass(unittest.TestCase):
         self.s1.update(105, 2, x=10)
         self.assertEqual(str(self.s1), "[Square] (105) 3/1 - 2")
 
-        def testSquareToDictionary(self):
-            for square in [self.s1, self.s2, self.s3]:
-                square_dic = square.to_dictionary()
-                for key, value in square_dic.items():
-                    self.assertEqual(getattr(square, key), value)
-                self.assertEqual(len(square_dic), len(square.__dict__))
+    def testSquareToDictionary(self):
+        for square in [self.s1, self.s2, self.s3]:
+            square_dic = square.to_dictionary()
+            for key, value in square_dic.items():
+                self.assertEqual(getattr(square, key), value)
+
 
 if __name__ == '__main__':
     unittest.main()

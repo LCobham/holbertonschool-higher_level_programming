@@ -111,7 +111,5 @@ class TestRectangleMethods(unittest.TestCase):
             self.assertEqual(len(rectangle_dic), len(rectangle.__dict__))
 
 
-
-
 if __name__ == "__main__":
     unittest.main()

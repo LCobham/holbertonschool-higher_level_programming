@@ -3,6 +3,7 @@
     This module defines the Square class.
 """
 
+from random import randrange
 from models.rectangle import Rectangle
 
 
@@ -55,3 +56,8 @@ class Square(Rectangle):
             my_dic[key] = getattr(self, key)
 
         return my_dic
+
+    @classmethod
+    def createRandomSquare(cls):
+        return cls(randrange(1, 100), randrange(1, 100),
+                   randrange(1, 100), randrange(1, 100))

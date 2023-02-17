@@ -3,6 +3,7 @@
     This module defines the Rectangle class.
 """
 
+from random import randrange
 from models.base import Base
 
 
@@ -114,3 +115,8 @@ class Rectangle(Base):
             my_dic[key] = getattr(self, key)
 
         return my_dic
+
+    @classmethod
+    def createRandomRectangle(cls):
+        return cls(randrange(1, 100), randrange(1, 100), randrange(1, 100),
+                   randrange(1, 100), randrange(1, 100))
