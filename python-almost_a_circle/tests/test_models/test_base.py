@@ -5,6 +5,8 @@
 
 
 import unittest
+import json
+import random
 from models.base import Base
 from models.square import Square
 from models.rectangle import Rectangle
@@ -58,6 +60,117 @@ class TestBaseId(unittest.TestCase):
         self.b9, self.b10 = Base(9), Base(10)
         self.assertEqual(self.b9.id, 9)
         self.assertEqual(self.b10.id, 10)
+
+    def testEmptyToJsonStr(self):
+        empty = Base.to_json_string(None)
+        self.assertEqual(type(empty), str)
+        self.assertEqual(empty, "[]")
+        empty = Base.to_json_string([])
+        self.assertEqual(type(empty), str)
+        self.assertEqual(empty, "[]")
+
+    def testRecToJsonStr(self):
+        r1 = Rectangle(random.randrange(1, 100), random.randrange(1, 100),
+                       random.randrange(1, 100), random.randrange(1, 100),
+                       random.randrange(100, 500))
+
+        r1_dic = r1.to_dictionary()
+        rjson = Base.to_json_string([r1_dic])
+        self.assertTrue(type(rjson) is str)
+        deserialized = json.loads(rjson)
+        for dic in deserialized:
+            for key, value in dic.items():
+                self.assertEqual(getattr(r1, key), value)
+                self.assertEqual(r1_dic[key], dic[key])
+                del r1_dic[key]
+            self.assertEqual(len(r1_dic), 0)
+
+        r2, r3 = Rectangle(1, 2, 3, 4, 5), Rectangle(5, 4, 3, 2, 1)
+        rec_li = [r1, r2, r3]
+        dic_li = [r1.to_dictionary(), r2.to_dictionary(), r3.to_dictionary()]
+        rjson = Base.to_json_string(dic_li)
+        deserialized = json.loads(rjson)
+        for idx, dic in enumerate(deserialized):
+            for key, value in dic.items():
+                self.assertEqual(getattr(rec_li[idx], key), value)
+                self.assertEqual(dic_li[idx][key], dic[key])
+                del dic_li[idx][key]
+            self.assertEqual(len(dic_li[idx]), 0)
+
+    def testSquareToJsonStr(self):
+        s1 = Square(random.randrange(1, 100), random.randrange(1, 100),
+                    random.randrange(1, 100), random.randrange(1, 100))
+
+        s1_dic = s1.to_dictionary()
+        rjson = Base.to_json_string([s1_dic])
+        self.assertTrue(type(rjson) is str)
+        deserialized = json.loads(rjson)
+        for dic in deserialized:
+            for key, value in dic.items():
+                self.assertEqual(getattr(s1, key), value)
+                self.assertEqual(s1_dic[key], dic[key])
+                del s1_dic[key]
+            self.assertEqual(len(s1_dic), 0)
+
+        s2 = Square(random.randrange(1, 100), random.randrange(1, 100),
+                    random.randrange(1, 100), random.randrange(1, 100))
+        s3 = Square(random.randrange(1, 100), random.randrange(1, 100),
+                    random.randrange(1, 100), random.randrange(1, 100))
+        sq_li = [s1, s2, s3]
+        dic_li = [s1.to_dictionary(), s2.to_dictionary(), s3.to_dictionary()]
+        rjson = Base.to_json_string(dic_li)
+        deserialized = json.loads(rjson)
+        for idx, dic in enumerate(deserialized):
+            for key, value in dic.items():
+                self.assertEqual(getattr(sq_li[idx], key), value)
+                self.assertEqual(dic_li[idx][key], dic[key])
+                del dic_li[idx][key]
+            self.assertEqual(len(dic_li[idx]), 0)
+
+    def testJsonToFileEmpty(self):
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", 'r', encoding='utf-8') as f:
+            contents = f.read()
+        self.assertEqual(contents, "[]")
+
+        Square.save_to_file([])
+        with open("Square.json", 'r', encoding='utf-8') as f:
+            contents = f.read()
+        self.assertEqual(contents, "[]")
+
+    def testJsonToFileRec(self):
+        r1 = Rectangle.createRandomRectangle()
+        r2 = Rectangle.createRandomRectangle()
+        r3 = Rectangle.createRandomRectangle()
+
+        rec_li = [r1, r2, r3]
+        Rectangle.save_to_file(rec_li)
+        with open("Rectangle.json", 'r', encoding='utf-8') as f:
+            contents = f.read()
+        objects = json.loads(contents)
+        copy = [objects[i].copy() for i in range(len(objects))]
+        for idx, dir in enumerate(objects):
+            for key, value in dir.items():
+                self.assertEqual(getattr(rec_li[idx], key), value)
+                del copy[idx][key]
+            self.assertEqual(len(copy[idx]), 0)
+
+    def testJsonToFileSquare(self):
+        s1 = Square.createRandomSquare()
+        s2 = Square.createRandomSquare()
+        s3 = Square.createRandomSquare()
+
+        sq_li = [s1, s2, s3]
+        Square.save_to_file(sq_li)
+        with open("Square.json", 'r', encoding='utf-8') as f:
+            contents = f.read()
+        objects = json.loads(contents)
+        copy = [objects[i].copy() for i in range(len(objects))]
+        for idx, dir in enumerate(objects):
+            for key, value in dir.items():
+                self.assertEqual(getattr(sq_li[idx], key), value)
+                del copy[idx][key]
+            self.assertEqual(len(copy[idx]), 0)
 
 
 if __name__ == '__main__':
