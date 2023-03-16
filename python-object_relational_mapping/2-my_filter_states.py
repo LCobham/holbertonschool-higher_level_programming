@@ -17,7 +17,7 @@ name = sys.argv[4]
 
 with MySQLdb.connect("localhost", usr, pswd, database, 3306) as con:
     cur = con.cursor()
-    cur.execute("SELECT * FROM states WHERE name = %s", name)
+    cur.execute("SELECT * FROM states WHERE name = %s", (name, ))
     res = cur.fetchall()
     for row in res:
         print(row)
