@@ -16,7 +16,7 @@ usr, pswd, database = sys.argv[1], sys.argv[2], sys.argv[3]
 
 with MySQLdb.connect("localhost", usr, pswd, database, 3306) as con:
     cur = con.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%'")
+    cur.execute("SELECT * FROM states WHERE BINARY name LIKE 'N%'")
     res = cur.fetchall()
     for row in res:
         print(row)
