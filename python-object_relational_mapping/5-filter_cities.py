@@ -27,3 +27,6 @@ with MySQLdb.connect("localhost", usr, pswd, database, 3306) as con:
             print(f"{row[0]}, ", end='')
         else:
             print(row[0])
+
+if last_idx < 0:
+    print("")
