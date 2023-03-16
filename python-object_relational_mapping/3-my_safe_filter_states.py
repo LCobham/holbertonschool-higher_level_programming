@@ -12,7 +12,7 @@ if __name__ == "__main__":
     if len(sys.argv) < 5:
         print("Incorrect number of args passed.")
         print("USAGE:" +
-            "./3-my_safe_filter_states.py username password database name")
+              "./3-my_safe_filter_states.py username password database name")
         sys.exit(1)
 
     usr, pswd, database = sys.argv[1], sys.argv[2], sys.argv[3]
