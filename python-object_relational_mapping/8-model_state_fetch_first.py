@@ -16,15 +16,16 @@ if __name__ == "__main__":
         sys.exit(1)
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
-                            sys.argv[1], sys.argv[2], sys.argv[3]
+                            sys.argv[1],
+                            sys.argv[2],
+                            sys.argv[3]
     ))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    first_state = session.query(State).first()
 
+    first_state = session.query(State).first()
     if first_state:
-        for state in first_state:
-            print("{}: {}".format(state.id, state.name))
+            print("{}: {}".format(first_state.id, first_state.name))
     else:
         print("Nothing")
