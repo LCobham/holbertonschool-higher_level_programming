@@ -24,6 +24,7 @@ if __name__ == "__main__":
     first_state = session.query(State).first()
 
     if first_state:
-        print("{}: {}".format(state.id, state.name))
+        for state in first_state:
+            print("{}: {}".format(state.id, state.name))
     else:
         print("Nothing")
