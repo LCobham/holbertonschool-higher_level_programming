@@ -4,6 +4,6 @@
 exports.addMeMaybe = function (x, theFunction) {
   if (Number(x)) {
     x = Number(x) + 1;
-    theFunction(x)
-    }
+    theFunction(x);
   }
+};
