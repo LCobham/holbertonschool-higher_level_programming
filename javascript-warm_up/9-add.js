@@ -1,7 +1,7 @@
 #!/usr/bin/node
 /* This module prints to stdout */
 
-function add(a, b) {
+function add (a, b) {
   if (Number(a) && Number(b)) {
     console.log(Number(a) + Number(b));
   } else {
@@ -9,4 +9,4 @@ function add(a, b) {
   }
 }
 
-add(process.argv[2], process.argv[3])
+add(process.argv[2], process.argv[3]);

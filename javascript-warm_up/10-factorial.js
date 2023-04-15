@@ -1,7 +1,7 @@
 #!/usr/bin/node
 /* This module prints to stdout */
 
-function factorial(a) {
+function factorial (a) {
   if (a && a > 0 && Math.floor(a) === a) {
     if (a === 1) {
       return (1);
