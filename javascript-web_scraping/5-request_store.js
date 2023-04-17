@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 const request = require('request');
-const fs = require('node:fs');
+const fs = require('fs');
 
 const [url, filename] = process.argv.slice(2, 4);
 
