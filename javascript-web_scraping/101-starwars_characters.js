@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 const request = require('request');
-const url = 'https://swapi-api.hbtn.io/api/films/';
+const url = 'https://swapi-api.alx-tools.com/api/films/';
 const movieId = process.argv[2];
 
 const getMovie = new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ getMovie.then((actorURLs) => {
           reject(err);
         } else {
           const actorName = JSON.parse(body).name;
-          const actorId = actorURL.split('/')[-2];
+          const actorId = actorURL.split('/').slice(-2, -1);
           resolve([actorName, actorId]);
         }
       });
@@ -33,7 +33,9 @@ getMovie.then((actorURLs) => {
   Promise.all(actorPromises)
     .then(actorData => {
       actorData.sort((a, b) => a[1] - b[1]);
-      actorData.forEach(actor => console.log(actor[0]));
+      actorData.forEach(actor => {
+        console.log(`${actor[0]}`);
+      });
     })
     .catch(err => console.error(err));
 });
