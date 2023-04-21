@@ -1,14 +1,13 @@
 $(() => {
-
   $.ajax({
-    url: 'https://swapi-api.alx-tools.com/api/films/?format=json',
+    url: 'https://swapi-api.hbtn.io/api/films/?format=json',
     type: 'GET',
     contentType: 'application/json',
-    succes: data => {
+    success: data => {
       for (const film of data.results) {
-        $('UL#list_movies').append(`<li>${film.title}<\li>`);
+        $('UL#list_movies').append(`<li>${film.title}</li>`);
       }
     },
-    error: err => { console.log(err) }
-  })
+    error: err => { console.log(err); }
+  });
 });
